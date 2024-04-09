@@ -16,7 +16,8 @@ module.exports = {
         })
     },
 
-    createCity:
+    createCity: (req, res) => {},
+
 
     getCities: (req, res) => {
         sequelize.query('select * from cites as ci join countries as c on ci.country_id = c.country_id ')
@@ -28,7 +29,7 @@ module.exports = {
 
     },
 
-    deleteCities: (req, res) => {}
+    deleteCities: (req, res) => {},
 
     
     seed: (req, res) => {
