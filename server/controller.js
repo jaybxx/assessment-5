@@ -5,6 +5,32 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize(CONNECTION_STRING);
 
 module.exports = {
+
+
+    getCountries: (req, res) => {
+        sequelize.query('select * from countries')
+        .then(() => {
+            (dbRes) => {
+                res.status(200).send(dbRes[0])
+             }
+        })
+    },
+
+    createCity:
+
+    getCities: (req, res) => {
+        sequelize.query('select * from cites as ci join countries as c on ci.country_id = c.country_id ')
+        .then(() => {
+            (dbRes) => {
+                res.status(200).send(dbRes[0])
+             }
+        })
+
+    },
+
+    deleteCities: (req, res) => {}
+
+    
     seed: (req, res) => {
         sequelize.query(`
             drop table if exists cities;
@@ -223,4 +249,5 @@ module.exports = {
             res.sendStatus(200)
         }).catch(err => console.log('error seeding DB', err))
     }
+
 }
